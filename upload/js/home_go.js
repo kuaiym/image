@@ -1,0 +1,1 @@
+document.write("<a href=\"http://www.shuozhan.net/lianxiwomen/\"><img src=\"/static/img/a2.jpg\" class=\"img-responsive center-block\" /></a>");
