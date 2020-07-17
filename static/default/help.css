@@ -1,0 +1,36 @@
+body {position: relative;}
+.bs-docs-sidebar .nav > li > a {
+    color: #666;
+    display: block;
+    font-weight: 500;
+    padding: 4px 20px;
+}
+.bs-docs-sidebar .nav > .active > a, .bs-docs-sidebar .nav > .active:hover > a, .bs-docs-sidebar .nav > .active:focus > a {
+    background-color: transparent;
+    border-left: 2px solid #563d7c;
+    color: #563d7c;
+    font-weight: 700;
+    padding-left: 18px;
+}
+.bs-docs-sidebar .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav > .active > ul {
+    display: block;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    font-weight: 400;
+    padding-bottom: 1px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-top: 1px;
+}
+.bs-docs-sidebar .nav .nav > li.active > a {
+    border-color: #666;
+}
+#items .panel-body{line-height:25px;}
+blockquote{font-size:1em;padding:0 10px;margin:0}
+.bs-docs-sidebar.affix {
+    position: fixed;
+    top: 20px;
+}
