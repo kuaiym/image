@@ -118,7 +118,7 @@ $.fn.kpdragsort = function (item, file) {
         $(document).mouseup(_mouseup);
     });
 };
-var NEWZHAN = {
+var KYM = {
     'bond_trace_check': function () {
         $.ajax({
             url: memurl + '/index.php?u=shop-bond_trace_check-ajax-1',
@@ -381,14 +381,14 @@ var NEWZHAN = {
             var type = $('input[name=agree]:checked').val(), buyer_type = $('input[name=buyer_agree]:checked').val(),
                 tui_price = 0, notice = '确定提交？', content = $('#tuikuan_add').val();
             if (buyer_type == 1) {
-                NEWZHAN.book.tk_over('' + order_id + '', 0);
+                KYM.book.tk_over('' + order_id + '', 0);
             } else {
                 if (type == 2) {
                     layer.confirm('确认全额退款？提交后交易立即结束！', {icon: 3, title: '确定？'}, function (index) {
                         ppAjax.post("index.php?u=book-before_over-ajax-1", {"order_id": order_id}, function (data) {
                             ppAjax.alert(data);
                             if (window.ppData.err == 0) {
-                                NEWZHAN.book.tk_over('' + order_id + '', type);
+                                KYM.book.tk_over('' + order_id + '', type);
                             } else {
                                 layer.msg(window.ppData.msg);
                                 return false;
@@ -516,7 +516,7 @@ var NEWZHAN = {
                     timelem.html(hour + " 小时 " + minute + " 分 " + second + " 秒后" + msg);
                 } else {
                     clearInterval(timer);
-                    NEWZHAN.book.auto_comment(oid);
+                    KYM.book.auto_comment(oid);
                     $("#info_" + oid).html('');
                     $("#star_" + oid).hide();
                     timelem.html('已结束！');
@@ -601,7 +601,7 @@ var NEWZHAN = {
             $('#dz_submit').click(function () {
                 var flags = $('#flags').val();
                 var days = $('input[name=days]:checked').val();
-                NEWZHAN.pro.flag_submit(pid, cid, flags, days);
+                KYM.pro.flag_submit(pid, cid, flags, days);
             });
             $('.days').click(function () {
                 var sid = $(this).attr('sid'), days = $(this).val(), per_price = $(this).attr('per_price');

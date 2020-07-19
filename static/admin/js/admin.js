@@ -4,13 +4,6 @@ var _$_d6ab = ["home", "content", "attr", "meta[name=\"Author\"]", ".copyright",
 $(function() {
     setNav();
     loadMenu(_$_d6ab[0]);
-    var me = $(_$_d6ab[3])[_$_d6ab[2]](_$_d6ab[1]),
-        ve = $(_$_d6ab[4]),
-        n1 = 188,
-        n2 = n1 + 213 + _$_d6ab[5],
-        n3 = n1 + 233 + _$_d6ab[5],
-        n4 = n1 + 379 + _$_d6ab[5],
-        nn = n2 + n3 + n4;
     $(_$_d6ab[7])[_$_d6ab[6]](function() {
         addTab()
     });
@@ -19,16 +12,17 @@ $(function() {
         return false
     });
     var is = true;
-    if (me[_$_d6ab[11]](nn) <= 0) {
-        is = false
-    } else {
-        if (ve[_$_d6ab[12]]()[_$_d6ab[11]](nn) <= 0) {
-            is = false
-        }
-    }; if (!is) {
+    // if (me[_$_d6ab[11]](nn) <= 0) {
+    //     is = false
+    // } else {
+    //     if (ve[_$_d6ab[12]]()[_$_d6ab[11]](nn) <= 0) {
+    //         is = false
+    //     }
+    // }
+    if (!is) {
         $(_$_d6ab[13])[_$_d6ab[12]](_$_d6ab[5]);
         $(_$_d6ab[15])[_$_d6ab[14]](_$_d6ab[5])
-    };
+    }
     $(_$_d6ab[21])[_$_d6ab[20]](function() {
         $(this)[_$_d6ab[19]](_$_d6ab[16])
     })[_$_d6ab[18]](function() {
