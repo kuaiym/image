@@ -106,13 +106,13 @@ function add_cart(id,uid,sid,type){
 		layer.close(load);
 		return false;
 	}
-	ppAjax.post(webdir + "index.php?u=cart-add-ajax-1", {"id":id,"sid":sid,"num":1}, function(data){
+	ppAjax.post("/index.php?u=cart-add-ajax-1", {"id":id,"sid":sid,"num":1}, function(data){
 		ppAjax.alert(data);
 		if(window.ppData.err==0){
 			if(type>0){
-				window.location.href = webdir + "index.php?u=cart-index";
+				window.location.href = "/index.php?u=cart-index";
 			}else{
-				layer.alert(window.ppData.msg, {btn : ["立即去结算","稍候结算"]},function(){window.location.href= webdir + "index.php?u=cart-index";});
+				layer.alert(window.ppData.msg, {btn : ["立即去结算","稍候结算"]},function(){window.location.href= "/index.php?u=cart-index";});
 			}
 		}else{
 			layer.msg(window.ppData.msg);
@@ -122,7 +122,7 @@ function add_cart(id,uid,sid,type){
 }
 function del_cart(id,sid){
 	var load = layer.load();
-	ppAjax.post(webdir + "index.php?u=cart-del-ajax-1", {"id":id}, function(data){
+	ppAjax.post("/index.php?u=cart-del-ajax-1", {"id":id}, function(data){
 		ppAjax.alert(data);
 		if(window.ppData.err==0){
 			layer.msg(window.ppData.msg);
@@ -176,7 +176,7 @@ function save_cart_jifen(id){
 }
 function move_fav(id,pid){
 	var load = layer.load();
-	ppAjax.post(webdir + "index.php?u=fav-cart_to_fav-ajax-1", {"id":id,"pid":pid}, function(data){
+	ppAjax.post("/index.php?u=fav-cart_to_fav-ajax-1", {"id":id,"pid":pid}, function(data){
 		layer.close(load);
 		ppAjax.alert(data);
 		if(window.ppData.err==0){
@@ -192,7 +192,7 @@ function post_buy(id,pid,i){
 	$.ajax({
 		type	: "POST",
 		cache	: false,
-		url		: webdir + "member/index.php?book-cart_add",
+		url		: "/member/index.php?book-cart_add",
 		data	: {"id" : id,"pid" : pid, "num" : $("#num_" + id).val(), "use_jifen" : $("#jifen_" + id).val(),"first" : i},
 		async	: false,
 		success	: function(data){
@@ -210,7 +210,7 @@ function post_buy(id,pid,i){
 }
 /* 购物车结束 */
 function add_fav(id,sid){
-	ppAjax.post(webdir + "index.php?u=fav-add-ajax-1", {"id":id,"sid":sid}, function(data){
+	ppAjax.post("/index.php?u=fav-add-ajax-1", {"id":id,"sid":sid}, function(data){
 		ppAjax.alert(data);
 		if(window.ppData.err==0){
 			layer.msg(window.ppData.msg);
@@ -220,7 +220,7 @@ function add_fav(id,sid){
 	});
 }
 function del_fav(id,sid){
-	ppAjax.post(webdir + "index.php?u=fav-del-ajax-1", {"id":id,"sid":sid}, function(data){
+	ppAjax.post("/index.php?u=fav-del-ajax-1", {"id":id,"sid":sid}, function(data){
 		ppAjax.alert(data);
 		if(window.ppData.err==0){
 			layer.msg(window.ppData.msg);
@@ -256,11 +256,11 @@ function change_jifen(max,price){
 	$('#_jifen_notice').text(_jifen_m);
 }
 function list_cron(){
-	$.getScript(webdir+"index.php?u=cron-flag-id-2-ajax-1", function(){});
+	$.getScript("/index.php?u=cron-flag-id-2-ajax-1", function(){});
 }
 function home_cron(){
-	$.getScript(webdir+"index.php?u=cron-flag-id-1-ajax-1", function(){});
-	$.getScript(webdir+"index.php?u=cron-refresh_total-ajax-1", function(){});
+	$.getScript("/index.php?u=cron-flag-id-1-ajax-1", function(){});
+	$.getScript("/index.php?u=cron-refresh_total-ajax-1", function(){});
 }
 function qiandao(){
 	ppAjax.post(memurl + "/index.php?u=index-qiandao-ajax-1", {'rnum':Math.random()}, function(data){
@@ -523,8 +523,15 @@ function tabs(upid,obj){
 	$("#"+ upid + "_cont_" + id).show().siblings().hide();
 }
 $(document).ready(function () {
-	$("#search_form").keypress(function(e) {
-		if(e.which == 13) return false;
+	// $("#search_form").keypress(function(e) {
+	// 	if(e.which == 13) return false;
+	// });
+	$("#search_keyword").keyup(function(e){
+		var code = e.key;
+		if(code==="Enter") e.preventDefault();
+		if(code===" " || code==="Enter" || code===","|| code===";"){
+		    $('#search_form').submit();
+		}
 	});
 	$("#select_mid").text($("#search_mids p.active").text());
 	$("#select_mid_wrap").click(function(){$("#search_mids").toggle()});
@@ -618,7 +625,7 @@ $(document).ready(function () {
 		return false;
 	});
 	if(_uid && _uid> 0){
-		$.getScript(webdir + "index.php?u=pm-index", function(){
+		$.getScript("/index.php?u=pm-index", function(){
 			if(pm_count){
 				$("#top_newpm").html('<a href="'+memurl+'/index.php?u=pm-index" onMouseOver="layer.tips(\'有'+pm_count+'条新消息\',this);" class="blink"><i class="icon-commenting"></i></a>');blink('.blink');
 			}

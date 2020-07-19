@@ -100,7 +100,7 @@ function blink(selector){
 	});
 }
 function add_fav(id,sid){
-	ppAjax.post(webdir + "index.php?u=fav-add-ajax-1", {"id":id,"sid":sid}, function(data){
+	ppAjax.post("/index.php?u=fav-add-ajax-1", {"id":id,"sid":sid}, function(data){
 		ppAjax.alert(data);
 		if(window.ppData.err==0){
 			layer.msg(window.ppData.msg);
@@ -110,7 +110,7 @@ function add_fav(id,sid){
 	});
 }
 function del_fav(id,sid){
-	ppAjax.post(webdir + "index.php?u=fav-del-ajax-1", {"id":id,"sid":sid}, function(data){
+	ppAjax.post("/index.php?u=fav-del-ajax-1", {"id":id,"sid":sid}, function(data){
 		ppAjax.alert(data);
 		if(window.ppData.err==0){
 			layer.msg(window.ppData.msg);
@@ -146,11 +146,11 @@ function change_jifen(max,price){
 	$('#_jifen_notice').text(_jifen_m);
 }
 function list_cron(){
-	$.getScript(webdir+"index.php?u=cron-flag-id-2-ajax-1", function(){});
+	$.getScript("/index.php?u=cron-flag-id-2-ajax-1", function(){});
 }
 function home_cron(){
-	$.getScript(webdir+"index.php?u=cron-flag-id-1-ajax-1", function(){});
-	$.getScript(webdir+"index.php?u=cron-refresh_total-ajax-1", function(){});
+	$.getScript("/index.php?u=cron-flag-id-1-ajax-1", function(){});
+	$.getScript("/index.php?u=cron-refresh_total-ajax-1", function(){});
 }
 function send_buy(){
 	var user_price = $('#user_price').val(),totalprice = $('#book_price').val() * 1 , dprice = $('#book_dprice').val() * 1, user_jifen = $('#user_jifen').val() * 1;
@@ -336,7 +336,7 @@ $(document).ready(function () {
 		if($(this).attr('href')) window.location = $(this).attr('href');
 	});
 	if(_uid && _uid> 0){
-		$.getScript(webdir + "index.php?u=pm-index", function(){
+		$.getScript("/index.php?u=pm-index", function(){
 			if(pm_count){
 				$("#top_newpm").html('<a href="'+memurl+'/index.php?u=pm-index" class="blink"><i class="icon-commenting"></i></a>');blink('.blink');
 			}

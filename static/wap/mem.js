@@ -447,7 +447,7 @@ var NEWZHAN = {
             var msg = '#msg_' + oid;
             var rated = $('input[name=rated_' + oid + ']:checked').val(), content = $(msg).val();
             $.ajax({
-                url: webdir + 'member/index.php?u=comment-post-ajax-1',
+                url: '/member/index.php?u=comment-post-ajax-1',
                 type: 'POST',
                 data: {'content': content, 'oid': oid, 'rated': rated, 'rnum': Math.random()},
                 dataType: 'json',
@@ -467,7 +467,7 @@ var NEWZHAN = {
         'del': function (oid, _type) {
             layer.confirm('确定删除吗？', {icon: 3, title: '提示'}, function (index) {
                 $.ajax({
-                    url: webdir + 'member/index.php?u=book-del',
+                    url: '/member/index.php?u=book-del',
                     type: 'POST',
                     data: {'oid': oid, 'type': _type, 'rnum': Math.random()},
                     dataType: 'json',
@@ -487,7 +487,7 @@ var NEWZHAN = {
         'zhongjie': function (order_id) {
             layer.confirm('确定申请官方客服介入？<br/>申请后请等待官方客服与您联系！', {icon: 3, title: '提示'}, function (index) {
                 $.ajax({
-                    url: webdir + 'member/index.php?u=book-zhongjie',
+                    url: '/member/index.php?u=book-zhongjie',
                     type: 'POST',
                     data: {'oid': order_id, 'rnum': Math.random()},
                     dataType: 'json',
@@ -524,7 +524,7 @@ var NEWZHAN = {
             }, 1000);
         },
         'auto_comment': function (_oid) {
-            $.post(webdir + "member/index.php?u=book-auto_comment-ajax-1", {oid: _oid}, function (result) {
+            $.post("/member/index.php?u=book-auto_comment-ajax-1", {oid: _oid}, function (result) {
             });
         },
     },

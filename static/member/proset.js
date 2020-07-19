@@ -128,7 +128,14 @@ function layeralert(info) {
 $("#pp_dropbox").kpdragsort(".d_li",0);
 $("#downlist").kpdragsort(".item",1);
 $(document).ready(function(){
-	ppLoadJs(webdir+"static/fileupload/js/vendor/jquery.ui.widget.js", webdir+"static/fileupload/js/load-image.all.min.js", webdir+"static/fileupload/js/jquery.iframe-transport.js", webdir+"static/fileupload/js/jquery.fileupload.js", webdir+"static/fileupload/js/jquery.fileupload-process.js", webdir+"static/fileupload/js/jquery.fileupload-image.js", webdir+"static/fileupload/js/jquery.fileupload-validate.js", function(){});
+	ppLoadJs(
+		"/static/fileupload/js/vendor/jquery.ui.widget.js",
+		"/static/fileupload/js/load-image.all.min.js",
+		"/static/fileupload/js/jquery.iframe-transport.js",
+		"/static/fileupload/js/jquery.fileupload.js",
+		"/static/fileupload/js/jquery.fileupload-process.js",
+		"/static/fileupload/js/jquery.fileupload-image.js",
+		"/static/fileupload/js/jquery.fileupload-validate.js", function(){});
 	var myos = appInfo();
 	if(myos.msie && myos.version < 9){
 		$("#browser").html('<strong style="color:red"><i class="icon-bullhorn text-muted"></i> 请使用火狐或chrome浏览器编辑！</strong>').show('fast');
@@ -147,7 +154,7 @@ $(document).ready(function(){
 	window.weburl = (function() {
 		return memurl.substr(0, memurl.lastIndexOf("/"));
 	})();
-	window.UEDITOR_HOME_URL = webdir + "static/admin/js/ueditor/";
+	window.UEDITOR_HOME_URL = "/static/admin/js/ueditor/";
 	ppLoadJs(UEDITOR_HOME_URL+"ueditor.config.js", UEDITOR_HOME_URL+"ueditor.all.min.js", UEDITOR_HOME_URL+"lang/zh-cn/zh-cn.js", UEDITOR_HOME_URL+"third-party/zeroclipboard/ZeroClipboard.min.js", function(){
 		window['ZeroClipboard']=ZeroClipboard;
 		$("#content").removeAttr("class");
@@ -258,7 +265,7 @@ function check_images(){
 function photo_insert(aid,big){
 	var elm 	= $('#photo_' + aid) ;
 	var _alt 	= $('#alt_' + aid).val();
-	var img 	= '<img class="img-responsive center-block" src="'+webdir+big+'" aid="'+aid+'" alt="'+_alt+'">';
+	var img 	= '<img class="img-responsive center-block" src="/'+big+'" aid="'+aid+'" alt="'+_alt+'">';
 	elm.find('.thumbnail').addClass('bred');
 	$('#hide_' + aid).val(1);
 	ue.execCommand('insertHtml', img);
